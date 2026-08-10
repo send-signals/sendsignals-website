@@ -427,12 +427,25 @@
      app's TURNSTILE_SECRET_KEY (Cloudflare issues both at once). -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__ssTurnstileLoad" async defer></script>
 <script>
-  // WI014-01: paste your Cloudflare Turnstile PUBLIC site key here AND set the matching
-  // TURNSTILE_SECRET_KEY in the app env at the same time. While this is empty, no widget
-  // shows and no token is sent, and the app's /api/demo-request skips verification
-  // (secret unset) — so the form keeps working exactly as before. Set both together and
-  // the widget renders here and the server starts enforcing it.
-  var TURNSTILE_SITE_KEY = '0x4AAAAAADoobArHCAkBHLCx';
+  // Cloudflare Turnstile PUBLIC site key.
+  //
+  // ⚠️ THIS MUST BE THE SAME WIDGET AS THE APP'S NEXT_PUBLIC_TURNSTILE_SITE_KEY.
+  // A Turnstile secret validates tokens from exactly ONE widget, and the app has a
+  // single TURNSTILE_SECRET_KEY shared by /api/demo-request (this form) and
+  // /api/trial (the app's /try signup). Point them at two different widgets and the
+  // secret can only ever match one — the other silently 400s on every real
+  // submission while its widget still shows a green "Success!" to the visitor.
+  //
+  // That is exactly what happened: this file kept the original widget
+  // (0x4AAAAAADoobArHCAkBHLCx) after the app moved to 0x4AAAAAADqc88tN9R_b_ugL, so
+  // the public demo form rejected every genuine request from 2026-06-21 until
+  // 2026-08-09. It went unnoticed because the only verification ever run confirmed
+  // that a FORGED token is rejected — never that a VALID one is accepted.
+  //
+  // Before changing this, confirm the widget's allowed hostnames include
+  // sendsignals.co.uk (verified for this key on 2026-08-09: it renders, solves, and
+  // /api/demo-request returns 200).
+  var TURNSTILE_SITE_KEY = '0x4AAAAAADqc88tN9R_b_ugL';
   var __ssTurnstileWidgetId = null;
   window.__ssTurnstileLoad = function () {
     if (TURNSTILE_SITE_KEY && window.turnstile) {
