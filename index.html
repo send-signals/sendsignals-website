@@ -431,10 +431,12 @@
   //
   // ⚠️ THIS MUST BE THE SAME WIDGET AS THE APP'S NEXT_PUBLIC_TURNSTILE_SITE_KEY.
   // A Turnstile secret validates tokens from exactly ONE widget, and the app has a
-  // single TURNSTILE_SECRET_KEY shared by /api/demo-request (this form) and
-  // /api/trial (the app's /try signup). Point them at two different widgets and the
-  // secret can only ever match one — the other silently 400s on every real
-  // submission while its widget still shows a green "Success!" to the visitor.
+  // single TURNSTILE_SECRET_KEY shared by every route that calls verifyTurnstile:
+  // /api/demo-request (this form), /api/demo/website-session (the sandbox the app's
+  // /try tour creates) and /api/demo/sandbox/start. Point them at two different
+  // widgets and the secret can only ever match one — the other silently 400s on
+  // every real submission while its widget still shows a green "Success!" to the
+  // visitor.
   //
   // That is exactly what happened: this file kept the original widget
   // (0x4AAAAAADoobArHCAkBHLCx) after the app moved to 0x4AAAAAADqc88tN9R_b_ugL, so
