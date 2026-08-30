@@ -458,10 +458,16 @@
   function closeLegal(id) { document.getElementById(id).classList.remove('active'); if (history.replaceState) history.replaceState(null, '', location.pathname + location.search); }
   // Deep-link straight to a policy, e.g. sendsignals.co.uk/#privacy — gives app
   // stores, emails and contracts a stable, shareable privacy-policy URL.
-  window.addEventListener('DOMContentLoaded', function () {
+  function ssHandleLegalHash() {
     var h = (location.hash || '').replace('#', '');
     if (['privacy', 'terms', 'cookies'].indexOf(h) !== -1) openLegal(h);
-  });
+  }
+  // On first load (cold-loading the URL, e.g. a reviewer opening it) …
+  window.addEventListener('DOMContentLoaded', ssHandleLegalHash);
+  // … and also when the hash changes on an already-open page (back/forward,
+  // or following a #privacy link while the page is open), so the shareable
+  // policy URLs open the policy everywhere they're used.
+  window.addEventListener('hashchange', ssHandleLegalHash);
 
   document.getElementById('demoForm').addEventListener('submit', async function(e) {
     e.preventDefault();
