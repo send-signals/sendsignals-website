@@ -17,10 +17,11 @@ safeguarding service. The school's staff carry out the actual safeguarding.**
 
 The service is operated by **Send Signals Limited**, a
 company registered in England & Wales (company no. **17147174**),
-registered office **7 Paradise Grove, Walsall, England, WS3 4NN**.
+registered office **71-75 Shelton Street, Covent Garden, London, WC2H 9JQ**.
 
 - Privacy / data protection contact: **Nicola Youngman (Data Protection Lead)** — **privacy@sendsignals.co.uk**
 - ICO registration number: **ZC138681**
+- VAT registration number: **GB527441102**
 
 _We have assessed whether a statutory Data Protection Officer is required and, at current scale, have appointed a named Data Protection Lead; we will review this as the service grows._ `[LEGAL REVIEW: confirm the DPO assessment + review triggers]`
 

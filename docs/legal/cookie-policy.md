@@ -186,4 +186,4 @@ right to complain to the UK Information Commissioner's Office (ICO) at
 
 privacy@sendsignals.co.uk
 
-**Send Signals Limited**, a company registered in England & Wales (company no. **17147174**), registered office **7 Paradise Grove, Walsall, England, WS3 4NN**. ICO registration number **ZC138681**.
+**Send Signals Limited**, a company registered in England & Wales (company no. **17147174**), registered office **71-75 Shelton Street, Covent Garden, London, WC2H 9JQ**. ICO registration number **ZC138681**. VAT registration number **GB527441102**.
