@@ -65,7 +65,6 @@
     .team-section { text-align: center; } .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; } .team-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2rem; text-align: center; } .team-card h3 { font-size: 1.15rem; margin-bottom: 0.25rem; } .team-card .role { color: var(--blue-light); font-size: 0.85rem; margin-bottom: 1rem; } .team-card p { color: var(--gray); font-size: 0.9rem; }
     .contact-section { text-align: center; background: var(--navy-light); border-radius: 16px; padding: 3rem; max-width: 600px; margin: 3rem auto; } .contact-section h2 { margin-bottom: 1rem; } .contact-section p { color: var(--gray); margin-bottom: 1.5rem; } .contact-email { font-size: 1.25rem; color: var(--blue-light); font-weight: 600; }
     footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; color: var(--gray); font-size: 0.85rem; } .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; } .footer-links a { color: var(--gray); font-size: 0.85rem; }
-    .legal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,22,40,0.98); z-index: 200; overflow-y: auto; padding: 4rem 2rem; } .legal-overlay.active { display: block; } .legal-content { max-width: 800px; margin: 0 auto; } .legal-content h1 { font-size: 2rem; margin-bottom: 2rem; } .legal-content h2 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--blue-light); } .legal-content p, .legal-content li { color: var(--gray-light); margin-bottom: 0.75rem; font-size: 0.95rem; } .legal-content ul { padding-left: 1.5rem; } .legal-close { position: fixed; top: 1rem; right: 2rem; background: var(--blue); color: var(--white); border: none; padding: 0.5rem 1.25rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; z-index: 201; }
     .cookie-banner { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy-light); border-top: 1px solid rgba(45,125,210,0.3); padding: 1rem 2rem; z-index: 150; } .cookie-banner.show { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; } .cookie-banner p { color: var(--gray-light); font-size: 0.85rem; flex: 1; } .cookie-btns { display: flex; gap: 0.75rem; } .cookie-btns button { padding: 0.5rem 1.25rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.85rem; } .cookie-accept { background: var(--blue); color: var(--white); } .cookie-decline { background: transparent; color: var(--gray); border: 1px solid var(--gray) !important; }
     .demo-form-section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
     .demo-form-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2.5rem; max-width: 600px; margin: 0 auto; }
@@ -397,23 +396,20 @@
 
 <footer>
   <div class="footer-links">
-    <a href="#privacy" onclick="openLegal('privacy'); return false;">Privacy Policy</a>
-    <a href="#terms" onclick="openLegal('terms'); return false;">Terms &amp; Conditions</a>
-    <a href="#cookies" onclick="openLegal('cookies'); return false;">Cookie Policy</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms &amp; Conditions</a>
+    <a href="/cookies">Cookie Policy</a>
   </div>
   <p>&copy; 2026 Send Signals Ltd. Because inclusion starts with listening.</p>
   <p style="margin-top:0.5rem;">sendsignals.co.uk</p>
 </footer>
 
-<div class="legal-overlay" id="privacy"><button class="legal-close" onclick="closeLegal('privacy')">Close</button><div class="legal-content"><h1>Privacy Policy</h1><p><strong>Last updated:</strong> June 2026</p><p><strong>Who controls your data:</strong> For pupil check-in data, your school or trust is the data controller and Send Signals Ltd is the data processor, acting only on the school's documented instructions under a UK GDPR (Article 28) Data Processing Agreement. For enquiries you send us through this website (your name, work email, school and role), Send Signals Ltd is the controller of those contact details.</p><h2>1. What We Collect</h2><p>We collect the minimum data necessary to provide our service:</p><ul><li>Student name and school-assigned identifier (from school Microsoft account)</li><li>Lesson check-in responses (green/amber/red)</li><li>Pre-set message selections</li><li>Timestamps of interactions</li><li>Device push-notification token &mdash; only if you turn notifications on, used to deliver check-in reminders and alerts</li></ul><p>When you request a demo or contact us through this website, we also collect the details you provide (your name, work email, school and role) so we can respond to your enquiry.</p><h2>2. How We Use It</h2><p>Pupil check-in data is used solely to support student wellbeing and SEND provision within the student's school. We never sell pupil data, use it for advertising, or share a pupil's data outside their school's SEND team. Demo-enquiry details are used only to respond to your enquiry — never for advertising, and never sold.</p><h2>3. Children's Data</h2><p>Our service is designed around the principles of the ICO Age Appropriate Design Code. Data minimisation is a core principle. Students never see other students' data. All data is processed with the child's best interests as the primary consideration.</p><h2>4. Data Storage</h2><p>Pupil data is stored at rest in the UK (Supabase, London region). The application is served over Vercel's global edge network, which is not pinned to a single region. Some sub-processors (email, push notifications, billing and bot-protection) operate outside the UK under appropriate UK transfer safeguards. We use Supabase with Row-Level Security to enforce data isolation at the database level. Data is encrypted in transit (HTTPS).</p><h2>5. Service Providers</h2><p>We don't sell data, use it for advertising, or allow third-party tracking. To run the service we use a small number of trusted data processors, acting only on our instructions: Supabase (UK-region database), Vercel (application hosting) and Cloudflare (bot protection), Resend (transactional and enquiry email), Stripe (billing — school-facing, no pupil data), Google Firebase Cloud Messaging (delivering push notifications to the app), and — where a school enables it — Anthropic (an optional support assistant for school staff; no pupil data). Each processes data only to deliver our service.</p><h2>6. Your Rights</h2><p>Under UK GDPR, you have the right to access, rectify, erase, restrict processing, and port your data. For pupil data, the school is the data controller — requests about a pupil's data should go to the school, and we assist the school in responding; if you contact us directly at privacy@sendsignals.co.uk we will pass your request to the relevant school promptly. For details you have given us directly (for example a demo enquiry), contact privacy@sendsignals.co.uk.</p><h2>7. Contact</h2><p>Data protection contact: Nicola Youngman (Data Protection Lead), privacy@sendsignals.co.uk. General enquiries: hello@sendsignals.co.uk. Send Signals Limited, a company registered in England &amp; Wales (company no. 17147174), registered office 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. ICO registration ZC138681. VAT registration number GB527441102.</p></div></div>
-<div class="legal-overlay" id="terms"><button class="legal-close" onclick="closeLegal('terms')">Close</button><div class="legal-content"><h1>Terms &amp; Conditions</h1><p><strong>Last updated:</strong> June 2026</p><h2>1. Service</h2><p>Send Signals provides a pupil wellbeing check-in platform for schools. Access is provided through school-managed accounts (e.g. Microsoft/Google sign-in) or credentials issued by the school. For pupil data the school is the data controller and Send Signals Limited acts as its data processor under a UK GDPR (Article 28) Data Processing Agreement.</p><h2>2. Intellectual Property</h2><p>All content, design, and code is the property of Send Signals Limited. The Send Signals name and logo are the subject of trademark applications filed April 2026.</p><h2>3. Acceptable Use</h2><p>The platform must be used in accordance with school policies and UK law. Schools are responsible for ensuring appropriate use within their institution.</p><h2>4. Liability</h2><p>Send Signals provides tools to support SEND provision but does not replace professional judgement. Schools retain responsibility for safeguarding decisions.</p><h2>5. Governing Law</h2><p>These terms are governed by English law and subject to the jurisdiction of the English courts.</p><h2>6. Contact</h2><p>For any questions about these terms, contact: hello@sendsignals.co.uk. Send Signals Limited, registered in England &amp; Wales (company no. 17147174), 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ. VAT registration number GB527441102.</p></div></div>
-<div class="legal-overlay" id="cookies"><button class="legal-close" onclick="closeLegal('cookies')">Close</button><div class="legal-content"><h1>Cookie Policy</h1><p><strong>Last updated:</strong> June 2026</p><h2>1. What Cookies We Use</h2><p>We use only essential cookies required for the platform to function: authentication session tokens and security cookies. On our public sign-up and demo forms we also use Cloudflare Turnstile, which sets a short-lived challenge cookie to block automated abuse. We do not use analytics, advertising, or tracking cookies.</p><h2>2. No Third-Party Tracking</h2><p>We do not use Google Analytics, Facebook Pixel, or any third-party tracking. Your browsing is not monitored or profiled.</p><h2>3. Your Choice</h2><p>Essential cookies are necessary for the service to work. You can disable cookies in your browser settings, but this may prevent the platform from functioning correctly.</p><h2>4. Contact</h2><p>For any questions about cookies, contact: hello@sendsignals.co.uk</p></div></div>
 
 <!-- Essential-only cookie NOTICE (not a consent banner — we set no cookies that need
      consent, so offering Accept/Decline would be a fake choice; see the Cookie Policy).
      Shown once; dismissal persists in localStorage. -->
 <div class="cookie-banner" id="cookieBanner">
-  <p>We use only essential cookies to keep the platform working — no tracking, no ads, no data sold. See our <a href="#cookies" onclick="openLegal('cookies'); return false;">Cookie Policy</a>.</p>
+  <p>We use only essential cookies to keep the platform working — no tracking, no ads, no data sold. See our <a href="/cookies">Cookie Policy</a>.</p>
   <div class="cookie-btns">
     <button class="cookie-accept" onclick="try{localStorage.setItem('ss_cookie_notice_dismissed','1')}catch(e){};document.getElementById('cookieBanner').classList.remove('show')">OK</button>
   </div>
@@ -454,19 +450,29 @@
       __ssTurnstileWidgetId = window.turnstile.render('#turnstileWidget', { sitekey: TURNSTILE_SITE_KEY });
     }
   };
-  function openLegal(id) { document.getElementById(id).classList.add('active'); if (history.replaceState) history.replaceState(null, '', '#' + id); }
-  function closeLegal(id) { document.getElementById(id).classList.remove('active'); if (history.replaceState) history.replaceState(null, '', location.pathname + location.search); }
-  // Deep-link straight to a policy, e.g. sendsignals.co.uk/#privacy — gives app
-  // stores, emails and contracts a stable, shareable privacy-policy URL.
+  // The policies used to be modals on this page, reached by #privacy, #terms and
+  // #cookies. They are real pages now (/privacy, /terms, /cookies).
+  //
+  // WHY THEY MOVED: a fragment is never sent to a server, so Google could not
+  // crawl it. Its OAuth verification refused our branding with three issues, two
+  // of which were this one cause — "your homepage does not include a link to
+  // your privacy policy" and "your privacy policy page does not have sufficient
+  // content", the latter because sendsignals.co.uk/privacy was a 404. Until that
+  // is fixed, every pupil and teacher signing in with Google sees "continue to
+  // nntgfripckgqhnohnhzr.supabase.co" instead of Send Signals.
+  //
+  // THIS REDIRECT IS NOT OPTIONAL. The old comment here recorded that #privacy
+  // is the stable URL given to "app stores, emails and contracts". Those links
+  // are already out in the world and cannot be edited, so they must keep
+  // landing on the policy. Removing this would break the App Store and Play
+  // listings silently, which is the worst way for a legal link to break.
   function ssHandleLegalHash() {
     var h = (location.hash || '').replace('#', '');
-    if (['privacy', 'terms', 'cookies'].indexOf(h) !== -1) openLegal(h);
+    if (['privacy', 'terms', 'cookies'].indexOf(h) !== -1) location.replace('/' + h);
   }
   // On first load (cold-loading the URL, e.g. a reviewer opening it) …
   window.addEventListener('DOMContentLoaded', ssHandleLegalHash);
-  // … and also when the hash changes on an already-open page (back/forward,
-  // or following a #privacy link while the page is open), so the shareable
-  // policy URLs open the policy everywhere they're used.
+  // … and also when the hash changes on an already-open page.
   window.addEventListener('hashchange', ssHandleLegalHash);
 
   document.getElementById('demoForm').addEventListener('submit', async function(e) {
