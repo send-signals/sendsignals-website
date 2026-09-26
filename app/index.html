@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get the App | Send Signals</title>
+  <meta name="description" content="Download the Send Signals app for Android or iPhone, or sign in with your school login card.">
+  <link rel="canonical" href="https://sendsignals.co.uk/app">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#2563EB">
+  <!--
+    ONE QR CODE FOR EVERY DEVICE.
+
+    The pupil sign-in sheet used to carry a QR pointing straight at Google Play,
+    so a family with an iPhone, an iPad or a computer scanned it and got a page
+    they could not use. Reprinting a sheet is not something a school will do
+    twice, so the QR now points here and this page decides.
+
+    Nothing is auto-redirected. A child scanning a bit of paper should see where
+    they have landed and press one clear button, and a redirect that guesses
+    wrong leaves them with nothing to read.
+
+    Every download link is visible with JavaScript switched off. The script only
+    moves the one that matches to the top: it never creates the others.
+  -->
+  <style>
+    :root { --navy: #0a1628; --navy-light: #132039; --blue: #2d7dd2; --blue-light: #4a9ae5; --white: #ffffff; --gray: #94a3b8; --gray-light: #cbd5e1; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--navy); color: var(--white); line-height: 1.6; }
+    a { color: var(--blue-light); text-decoration: none; } a:hover { text-decoration: underline; }
+    .app-page { max-width: 560px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+    .app-back { display: inline-block; margin-bottom: 2.5rem; font-size: 0.95rem; }
+    h1 { font-size: 1.9rem; margin-bottom: 0.75rem; }
+    .lede { color: var(--gray-light); margin-bottom: 2.5rem; }
+    .choice { background: var(--navy-light); border: 1px solid rgba(45,125,210,0.25); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+    .choice h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .choice p { color: var(--gray-light); font-size: 0.95rem; margin-bottom: 1rem; }
+    .choice p:last-child { margin-bottom: 0; }
+    .btn { display: inline-block; background: var(--blue); color: var(--white); padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+    .btn:hover { background: var(--blue-light); text-decoration: none; }
+    .soon { display: inline-block; padding: 0.85rem 0; color: var(--gray); font-size: 0.95rem; }
+    /* The device we think you are on gets the accent and comes first. */
+    .choice.match { border-color: var(--blue); order: -1; }
+    .stack { display: flex; flex-direction: column; }
+    .note { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(45,125,210,0.25); color: var(--gray); font-size: 0.9rem; }
+    .note a { margin-right: 1.25rem; }
+  </style>
+</head>
+<body>
+  <main class="app-page">
+    <a class="app-back" href="/">&larr; Send Signals</a>
+    <h1>Get the Send Signals app</h1>
+    <p class="lede">Pick your device. If you are not sure, you do not need the app at all. You can always scan your sign-in code instead.</p>
+
+    <div class="stack">
+      <section class="choice" id="choice-android">
+        <h2>Android phone or tablet</h2>
+        <p>Get it from Google Play.</p>
+        <a class="btn" id="link-android" href="https://play.google.com/store/apps/details?id=co.uk.sendsignals.app">Open Google Play</a>
+      </section>
+
+      <section class="choice" id="choice-ios">
+        <h2>iPhone or iPad</h2>
+        <p id="ios-text">The app is coming to the App Store soon. Until then, scan your sign-in code and the app will open in your browser. Everything works the same way.</p>
+        <span class="soon" id="ios-soon">Coming soon to the App Store</span>
+      </section>
+
+      <section class="choice" id="choice-desktop">
+        <h2>Computer</h2>
+        <p>There is no app for a computer, and you do not need one. Scan or type your sign-in code and it works in your browser.</p>
+      </section>
+    </div>
+
+    <p class="note">
+      Stuck? Ask your teacher for a new sign-in code.
+      <br><br>
+      <a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      /* ─────────────────────────────────────────────────────────────────
+         THE ONLY LINE TO CHANGE WHEN THE APP GOES LIVE ON THE APP STORE.
+
+         Set this to the numeric App Store ID (App Store Connect calls it the
+         "Apple ID" of the app, e.g. 6478123456). Leave it null until then:
+         a dead App Store link is worse than an honest "coming soon", because
+         a parent who taps it gets a Not Found page and assumes we are broken.
+
+         Nothing else on this page or on the printed sign-in sheets needs to
+         change. The QR code already points here.
+         ───────────────────────────────────────────────────────────────── */
+      var APPLE_APP_ID = null;
+
+      if (APPLE_APP_ID) {
+        var a = document.createElement('a');
+        a.className = 'btn';
+        a.href = 'https://apps.apple.com/gb/app/id' + APPLE_APP_ID;
+        a.textContent = 'Open the App Store';
+        var soon = document.getElementById('ios-soon');
+        soon.parentNode.replaceChild(a, soon);
+        document.getElementById('ios-text').textContent = 'Get it from the App Store.';
+      }
+
+      /* iPadOS 13 and later report themselves as a Mac, so a touch count is
+         the only reliable way to tell an iPad from a laptop. */
+      var ua = navigator.userAgent || '';
+      var touch = navigator.maxTouchPoints || 0;
+      var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Mac/.test(ua) && touch > 1);
+      var isAndroid = /Android/i.test(ua);
+
+      var id = isAndroid ? 'choice-android' : isIOS ? 'choice-ios' : 'choice-desktop';
+      var el = document.getElementById(id);
+      if (el) el.className = 'choice match';
+    })();
+  </script>
+</body>
+</html>
